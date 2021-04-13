@@ -1,34 +1,63 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand{:href => "#"}
-    %i.fas.fa-home
-    Navbar
-  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        %a.nav-link{:href => "#"}
-          Home
-          %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{:href => "#"} Link
-      %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Dropdown
-        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "#"} Action
-          %a.dropdown-item{:href => "#"} Another action
-          .dropdown-divider
-          %a.dropdown-item{:href => "#"} Something else here
-      %li.nav-item
-        %a.nav-link.disabled{:href => "#"} Disabled
-    %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
-.container-fluid
-  %h1
-    Header for Landing Page
-  / <haml_loud> link_to &quot;Privacy Policy&quot;, privacy_policy_path, class: &quot;btn btn-lg btn-warning&quot; </haml_loud>
-  = link_to privacy_policy_path, class: "btn btn-lg btn-warning" do
-    %i.fas.fa-gem
-    Privacy Policy
+.jumbotron
+  .display-4
+    What do you want to learn today?
+    
+
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Course.count
+    online courses
+    .row
+    Explore a variety of new topics
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Course.distinct.count(:user_id)
+    expert instructors
+    .row
+    Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    active learners
+    .row
+    Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Lifetime access
+    .row
+    Learn on your schedule
+
+%hr
+%h2
+  Popular courses
+.card-columns
+  - @courses.each do  |course|
+    = render 'courses/course', course: course
+%hr
+%h2
+  Top rated courses 
+.card-columns
+  - @courses.each do  |course|
+    = render 'courses/course', course: course
+%hr
+%h2
+  Latest courses
+.card-columns
+  - @latest_courses.each do  |course|
+    = render 'courses/course', course: course
+%hr
+
+
+= link_to privacy_policy_path, class: "btn btn-lg btn-warning" do
+  %i.fas.fa-gem
+  Privacy Policy
+  
+= link_to courses_path, class: 'btn btn-success' do
+  .fa.fa-book
+  Course
+   
