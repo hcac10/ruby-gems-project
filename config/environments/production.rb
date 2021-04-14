@@ -1,19 +1,33 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { :host => 'pure-shelf-14997.herokuapp.com', :protocol => 'https'}
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
   
-  config.action_mailer.smtp_settings = {
-    port: 587,
-    address: 'email-smtp.eu-central-1.amazonaws.com',
-    user_name: 'AKIAZMFZP32LFGYA3VOF',
-    password: 'BLP9ixXk4DJ4SyJaXjM4vrgJ+JZpBoEpe0klymbzea0t',
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  # For sendgrid/aws SES
+  #config.action_mailer.default_url_options = { :host => 'pure-shelf-14997.herokuapp.com', :protocol => 'https'}
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.delivery_method = :smtp
+  
+  # config.action_mailer.smtp_settings = {
+  #  port: 587,
+  #  address: 'email-smtp.eu-central-1.amazonaws.com',
+  #  user_name: 'AKIAZMFZP32LFGYA3VOF',
+  #  password: 'BLP9ixXk4DJ4SyJaXjM4vrgJ+JZpBoEpe0klymbzea0t',
+  #  authentication: :plain,
+  #  enable_starttls_auto: true
+  #} 
+
+  #Rails.application.config.middleware.use ExceptionNotification::Rack,
+   # email: {
+    #  deliver_with :deliver,
+     # email_prefix: "[PREFIX] ",
+    #  sender_address: %("corsego error" <hcac1035@yahoo.com>),
+    #  exception_recipients: %w[hcaceres@caltech.edu]
+    #}
+    
+  #End for sendgrid/aws
+  
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

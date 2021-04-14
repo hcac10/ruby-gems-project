@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@pure-shelf-14997.herokuapp.com'
+  default from: 'hcac1035@yahoo.com'
   # comment #
   layout 'mailer'
 end
